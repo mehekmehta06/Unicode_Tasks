@@ -4,23 +4,22 @@
     <title>Pokemon List</title>
 </head>
 <body>
-    <h1>Pokemon List</h1>
-    <ul>
-        {% for pokemon in display %}
-            <li>
-                Name: {{ pokemon.name }}<br><br>
-                Height: {{ pokemon.height }}<br><br>
-                Moves: 
-                
-                        <text>{{ pokemon.moves }},</text>
+    <h1>Pokemon Information</h1>
+    <ul>           
+            <li>    Name: {{ pokemon_name }}<br><br></li>
+            <li>    Height: {{ pokemon_height }}<br><br></li>    
+            <li>    Moves: 
+                    
+                        <text>{{pokemon_moves}}</text>
+                    
                 <br><br>
-                Level: {{ pokemon.level }}<br>
+            </li> 
+            <li>   
                 <p>Images: 
                     <div class="image-container">
-                            <img src="{{ pokemon.sprites }}" alt="Image">
+                            <img src="{{ pokemon_sprites }}" alt="Image">
                     </div>
-            </li>
-        {% endfor %}
+                </li>
     </ul>
 </body>
 </html>

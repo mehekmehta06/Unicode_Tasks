@@ -1,24 +1,25 @@
- <!--
- <html>
+<!--
+<html>
     <form method="post">
         {% csrf_token %}
-        {{ form1 }}
+        {{ form2 }}
         <button type="submit">Submit</button>
         
     </form>
     
 </html>
 -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
-
+    <title>Pokemon Fight Form</title>
+    
     <!-- Add custom fonts (Google Fonts) -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-
+    
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -29,7 +30,7 @@
             height: 100vh; /* Make the container fill the entire viewport height */
             margin: 0; /* Remove default margin */
         }
-
+        
         form {
             background-color: #fff; /* Form background color */
             padding: 20px;
@@ -37,18 +38,17 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow for the form */
             text-align: center;
         }
-
+        
         h1 {
             color: #ff5722; /* Header text color */
-            font-size: 24px; /* Adjust the font size as needed */
         }
-
+        
         label {
             margin: 10px 0;
             font-weight: bold;
             color: #333; /* Label text color */
         }
-
+        
         input[type="text"], input[type="email"] {
             width: 100%;
             padding: 10px;
@@ -56,7 +56,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
+        
         button[type="submit"] {
             width: 150px;
             padding: 10px;
@@ -68,7 +68,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease; /* Smooth hover effect */
         }
-
+        
         button[type="submit"]:hover {
             background-color: #f44336; /* Button background color on hover */
         }
@@ -77,9 +77,9 @@
 <body>
     <form method="post">
         {% csrf_token %}
-        <h1>Search</h1>
-        {{ form1 }}
+        <h1>Pokemon Fight Form</h1>
+        {{ form2 }}
         <button type="submit">Submit</button>
-    </form>
+    </form>  
 </body>
 </html>

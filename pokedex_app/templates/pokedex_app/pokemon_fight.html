@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Battle Result</title>
+    
+    <!-- Add custom fonts (Google Fonts) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0; /* Background color */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Make the container fill the entire viewport height */
+            margin: 0; /* Remove default margin */
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 24px; /* Adjust the font size as needed */
+        }
+        
+        .result-container {
+            text-align: center;
+        }
+        
+        .winner-label {
+            font-size: 18px; /* Adjust the font size as needed */
+            font-weight: bold;
+            color: #333; /* Label text color */
+        }
+
+        .winner-name {
+            font-size: 24px; /* Adjust the font size as needed */
+            font-weight: bold;
+            text-transform: uppercase; /* Convert the winner's name to uppercase */
+            color: #ff5722; /* Custom text color */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Pokémon Battle Result</h1>
+    </div>
+    <div class="result-container">
+        <div class="winner-label">The winner is:</div>
+        <h2 class="winner-name">{{ winner }}</h2>
+    </div>
+</body>
+</html>
+

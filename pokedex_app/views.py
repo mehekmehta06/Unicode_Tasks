@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from .forms import PokemonsearchForm
 from .forms import  PokemonTypeForm
+from .forms import  PokemonfightForm
 from .models import Pokemonsearch
 
 
@@ -95,8 +96,8 @@ def pokemon_by_type(request):
 def dashboard(request):
     return render(request, "pokedex_app/dashboard.html")
 
-"""
-def pokemon_search(request):
+
+def pokemon_display(request):
     if request.method == 'POST':
         form1 = PokemonsearchForm(request.POST)
 
@@ -115,18 +116,8 @@ def pokemon_search(request):
                     pokemon_list1 = data['height']
                     pokemon_list2 = [entry['move']['name'] for entry in data['moves']]
                     pokemon_list3 = data['sprites']['front_default']
-                    pokemon = Pokemonsearch(
-                        name=selected_name,
-                        height=data['height'],
-                        moves=[entry['move']['name'] for entry in data['moves']],  # You can store the entire moves data as JSON
-                        sprites=data['sprites']['front_default']                       
-                    )
-                    pokemon.save()
-                    pokemon = Pokemonsearch.objects.get(name=selected_name)
-                
-                    pokemon.level += 1
-                    pokemon.save()
-                    return render(request, 'pokedex_app/main.html', {'pokemon_height': pokemon_list1,'pokemon_moves': pokemon_list2, 'pokemon_name': pokemon_list0, 'pokemon_sprites': pokemon_list3})
+                    
+                    return render(request, 'pokedex_app/display_pokemon.html', {'pokemon_height': pokemon_list1,'pokemon_moves': pokemon_list2, 'pokemon_name': pokemon_list0, 'pokemon_sprites': pokemon_list3})
                 else:
                     return render(request, 'pokedex_app/error.html', {'error_message': error_message})
                 
@@ -136,7 +127,7 @@ def pokemon_search(request):
     else:
         form1 = PokemonsearchForm()
     return render(request, 'pokedex_app/pokemon_search.html', {'form1': form1} )
-"""
+
 
 
 def pokemon_search(request):
@@ -165,7 +156,7 @@ def pokemon_search(request):
     else:
         form1 = PokemonsearchForm()
     
-    return render(request, 'pokedex_app/pokemon_search.html', {'form1': form1})
+    return render(request, 'pokedex_app/pokemon_add.html', {'form1': form1})
 
 def fetch_pokemon_data(selected_name):
     
@@ -184,7 +175,32 @@ def fetch_pokemon_data(selected_name):
 
 def pokemon_detail(request):
     display_all = Pokemonsearch.objects.all()
-    return render(request, 'pokedex_app/display_pokemon.html', {'display': display_all})
+    return render(request, 'pokedex_app/pokemon_show.html', {'display': display_all})
 
 def pokemon_fight(request):
-    return render(request, 'pokedex_app/')
+    if request.method == 'POST':
+        form2 = PokemonfightForm(request.POST)
+        if form2.is_valid():
+            pokemon1 = str(form2.cleaned_data['name1'])
+            pokemon2 = str(form2.cleaned_data['name2'])
+        try:
+                pokemon = Pokemonsearch.objects.get(name=pokemon1)
+                level1=pokemon.level
+                pokemon = Pokemonsearch.objects.get(name=pokemon2)
+                level2=pokemon.level
+                if level1 > level2:
+                    winner = pokemon1
+                elif level2 > level1:
+                    winner = pokemon2
+                else:
+                    winner = "It's a draw!"
+                
+                return render(request, 'pokedex_app/pokemon_fight.html', {'winner': winner})
+            
+        except Pokemonsearch.DoesNotExist:
+                error_message = "One or both Pokémon do not exist."
+                return render(request, 'pokedex_app/error.html', {'error_message': error_message})
+    else:
+        form2= PokemonfightForm()
+    
+    return render(request, 'pokedex_app/pokemon_fightform.html',{'form2':form2})

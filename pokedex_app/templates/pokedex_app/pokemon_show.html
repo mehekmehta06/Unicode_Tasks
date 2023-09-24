@@ -1,0 +1,22 @@
+</head>
+<body>
+    <h1>Pokemon Display</h1>
+    <ul>           
+            <li> 
+                {% for pokemon in display %} 
+
+                Name: {{ pokemon.name }}<br><br>
+                Height: {{ pokemon.height }}<br><br>   
+                Moves: 
+                        <text>{{pokemon.moves}}</text>    
+                <br><br>
+                Level: {{ pokemon.level }}<br><br>
+                <p>Images: 
+                    <div class="image-container">
+                            <img src="{{ pokemon.sprites }}" alt="Image">
+                    </div>
+                {% endfor %}
+            </li>
+    </ul>
+</body>
+</html>
