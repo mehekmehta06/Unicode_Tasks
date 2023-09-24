@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pokedex</title>
+    <style>
+        /* Add some basic styling for the options and heading */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+        .option {
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #0056b3;
+        }
+        .heading {
+            font-family: 'Pacifico', cursive;
+            font-size: 48px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Pokedex</h1>
+    <div class="options">
+        <a href="/pokemon_form/select" class="option">Search</a>
+        <a href="/pokemon_form/search" class="option">Pokemon Search</a>
+        <a href="/pokemon_form/show" class="option">Pokemon data display</a>
+        <a href="" class="option">Competition</a>
+    </div>
+</body>
+</html>
+

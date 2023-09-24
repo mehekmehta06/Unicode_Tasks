@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pokemon List</title>
+</head>
+<body>
+    <h1>Pokemon List</h1>
+    <ul>
+        {% for pokemon in display %}
+            <li>
+                Name: {{ pokemon.name }}<br><br>
+                Height: {{ pokemon.height }}<br><br>
+                Moves: 
+                
+                        <text>{{ pokemon.moves }},</text>
+                <br><br>
+                Level: {{ pokemon.level }}<br>
+                <p>Images: 
+                    <div class="image-container">
+                            <img src="{{ pokemon.sprites }}" alt="Image">
+                    </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+<html>
+<head>
+    <title>Pokemon Details</title>
+</head>
+<body>
+    <h1>Pokemon Details</h1>
+    
+    <p>Name: {{ name }}</p>
+    <p>Height: {{ height }}</p>
+    <p>Moves: 
+        {% for move in  moves  %}
+        <li>
+            {{move}}
+        </li>
+        {% endfor %}
+    </p>
+    <p>Images: 
+        <div class="image-container">
+                <img src="{{ sprites }}" alt="Image">
+        </div>
+    </p>
+        
+    
+</body>
+</html>

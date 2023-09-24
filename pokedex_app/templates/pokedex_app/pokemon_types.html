@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>POKEMON</title>
+    </head>
+    <body>
+        <h1>Pokemon Features</h1>
+        <h2>Types</h2>
+        <ul>
+            {% for type in types %}
+                <li>{{ type }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Abilities</h2>
+        <ul>
+            {% for ability in abilities %}
+                <li>{{ ability }}</li>
+            {% endfor %}
+        </ul>
+        <h2>EggGroup</h2>
+        <ul>
+            {% for eggGroup in eggGroups %}
+                <li>{{ eggGroup }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Nature</h2>
+        <ul>
+            {% for nature in natures %}
+                <li>{{ nature }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
