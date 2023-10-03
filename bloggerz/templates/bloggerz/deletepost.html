@@ -1,0 +1,22 @@
+{% extends 'bloggerz/base.html' %}
+
+{% block title %}Delete Blog{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id == blogcreation.author.id %}
+        <h1>Delete Posts</h1>
+        <br><br>
+        <h3>Delete: {{ blogcreation.title }}</h3>
+        <br/>
+        <form method="POST">
+            {% csrf_token %}
+            <strong>Are you sure?</strong><br/><br/>
+            <button class="btn btn-secondary">DELETE</button>
+        </form>
+    {% else %}
+        You cannot make changes
+    {% endif %}
+{% else %}
+    Need to Login
+{% endif %}
+{% endblock %}

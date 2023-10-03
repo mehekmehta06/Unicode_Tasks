@@ -1,0 +1,26 @@
+{% extends 'bloggerz/base.html' %}
+
+{% block title %}Homepage{% endblock %}
+{% block content %}
+<ul>
+{% for post in object_list %}
+    <li>
+    <a href="{% url 'detail' post.pk %}">{{ post.title }}</a> <br> 
+    <text>Author:</text>  {{ post.author }} 
+    <br> created on : {{ post.created_on }}<br>
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %} 
+            <small><a href="{% url 'update' post.pk %}">(Edit)</a></small>
+            <small><a href="{% url 'delete' post.pk %}">(Delete)</a></small><br>
+        {% endif %}    
+    {% endif %}
+
+    <p>{{ post.content|slice:":500"|safe }}</p>
+    <div style="text-align: center;">
+    <img src={{post.image}} alt="image" width="200" height="200" >
+    </div>
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,20 +1,38 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.shortcuts import render
-from .forms import RegisterloginForm
-from .forms import InformationForm
-from .forms import BlogcreationForm
+#from .forms import RegisterloginForm
+#from .forms import InformationForm
+#from .forms import BlogcreationForm
 from .models import *
 from django.shortcuts import render, HttpResponseRedirect
-from django.views.generic import ListView, DetailView, CreateView
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 
 class Homeview(ListView):
     model = Blogcreation
-    template_name = 'blog_app/homepage.html'
+    template_name = 'bloggerz/homepage.html'
+    ordering= ['-created_on']
 
+class BlogDetailView(DetailView):
+    model = Blogcreation
+    template_name = 'bloggerz/Blog-detail.html'
 
+class AddPostView(CreateView):
+    model = Blogcreation
+    template_name = 'bloggerz/createblog.html'
+    fields = '__all__'
+
+class UpdatePostView(UpdateView):
+    model = Blogcreation
+    template_name= 'bloggerz/updatepost.html'
+    fields= ['title', 'content', 'image']
+
+class DeletePostView(DeleteView):
+    model = Blogcreation
+    template_name= 'bloggerz/deletepost.html'
+    success_url= reverse_lazy('home')
+"""
 def registerlogin(request):
     if request.method == 'POST':
         form = RegisterloginForm(request.POST)
@@ -89,7 +107,7 @@ def blogcreate(request):
     else:
         form = BlogcreationForm()
     return render(request, 'blog_app/createblog.html', {'form':form})
-    
+"""    
 
 
 

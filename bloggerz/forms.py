@@ -1,3 +1,4 @@
+"""
 from django import forms
 from .models import *
 
@@ -23,4 +24,4 @@ class BlogcreationForm(forms.Form):
     status = forms.ChoiceField(choices=STATUS)
     content = forms.CharField()
     image = forms.URLField()
-    
+"""   
