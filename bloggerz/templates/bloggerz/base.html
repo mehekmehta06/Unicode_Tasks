@@ -25,7 +25,7 @@
               </li>
                 {% if user.is_authenticated %}
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add' %}">Create Post</a>
+                    <a class="nav-link" href="{% url 'create' %}">Create Post</a>
                   </li>
 
                   <li class="nav-item">
@@ -39,8 +39,15 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
                   </li>
+                </ul>
                 {% endif %}  
-            </ul>
+                <form class="d-flex" role="search", method= "post">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  {% csrf_token %}
+                  {{ form }}
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            
           </div>
         </div>
       </nav>

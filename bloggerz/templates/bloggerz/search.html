@@ -1,0 +1,8 @@
+{% extends 'bloggerz/base.html' %}
+{% block content %}
+<form class="d-flex" role="search" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+{% endblock %}

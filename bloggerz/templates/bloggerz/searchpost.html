@@ -1,0 +1,20 @@
+{% extends 'bloggerz/base.html' %}
+{% block title %}Posts {% endblock %}
+{% block content %}
+<ul>
+<div class="container-fluid">
+    <li>
+{% for post in show %}    
+    {{ post.title }}<br> 
+    <text>Author:</text>  {{ post.author }} 
+    <br>created on : {{ post.created_on }}
+    <br>updated on : {{ post.updated_on }}
+    <p>{{ post.content|safe }}</p>
+    <div style="text-align: center;">
+    <img src={{post.image}} alt="image" width="200" height="200" >
+    </div>
+{% endfor %}
+</li>
+</div>
+</ul>
+{% endblock %}

@@ -1,26 +1,26 @@
 {% extends 'bloggerz/base.html' %}
 {% block title %}Post details{% endblock %}
 {% block content %}
-
 <ul>
+    <div class="container-fluid">
     <li>
-    {{ blogcreation.title }}<br> 
-    <text>Author:</text>  {{ blogcreation.author }} 
-    <br>created on : {{ blogcreation.created_on }}
-    <br>updated on : {{ blogcreation.updated_on }}
+    {{ display.title }}<br> 
+    <text>Author:</text>  {{ display.author }} 
+    <br>created on : {{ display.created_on }}
+    <br>updated on : {{ display.updated_on }}
     {% if user.is_authentication %}
-        {% if user.id == blogcreation.author.id %}
-    <a href="{% url 'update' post.pk %}">(Edit)</a>
+        {% if user.id == display.author.id %}
+    <a href="{% url 'update' post.pk  %}">(Edit)</a>
     <small><a href="{% url 'delete' post.pk %}">(Delete)</a></small><br>
         {% endif %}
     {% endif %}
 
-    <p>{{ blogcreation.content|safe }}</p>
+    <p>{{ display.content|safe }}</p>
     <div style="text-align: center;">
-    <img src={{blogcreation.image}} alt="image" width="200" height="200" >
+    <img src={{display.image}} alt="image" width="200" height="200" >
     </div>
     </li>
-
+    </div>
 </ul>
 
 {% endblock %}

@@ -2,8 +2,10 @@
 
 {% block title %}Homepage{% endblock %}
 {% block content %}
-<ul>
-{% for post in object_list %}
+
+{% for post in display %}
+    <ul>
+    <div class="container-fluid">
     <li>
     <a href="{% url 'detail' post.pk %}">{{ post.title }}</a> <br> 
     <text>Author:</text>  {{ post.author }} 
@@ -11,7 +13,7 @@
     {% if user.is_authenticated %}
         {% if user.id == post.author.id %} 
             <small><a href="{% url 'update' post.pk %}">(Edit)</a></small>
-            <small><a href="{% url 'delete' post.pk %}">(Delete)</a></small><br>
+            <small><a href="{% url 'delete' post.pk  %}">(Delete)</a></small><br>
         {% endif %}    
     {% endif %}
 
@@ -20,7 +22,8 @@
     <img src={{post.image}} alt="image" width="200" height="200" >
     </div>
     </li>
+    </ul>
+    </div>
 {% endfor %}
-</ul>
 
 {% endblock %}

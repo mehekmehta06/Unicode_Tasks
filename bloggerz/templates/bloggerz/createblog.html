@@ -5,20 +5,23 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-    {% if user.id == blogcreation.author.id %}
+    
+        <div class="container-fluid">
         <h1>Add Blog Posts</h1>
         <br><br>
+        
+        <div class="form-group">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-secondary">POST</button>
         </form>
-    {% else %}
-        You cannot make changes
-    {% endif %}
+        </div></div>
+    
 
 {% else %}
     Need to Login
-{% endif %}
+{% endif %}    
+    
 
 {% endblock %}
