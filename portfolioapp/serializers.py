@@ -15,12 +15,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
-"""
-class UserProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserProfile
-        fields = ['id', 'email', 'Fname', 'Lname', 'username', 'is_active', 'is_staff', 'is_admin', 'groups']
-"""
+
 class PortfolioModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = PortfolioModel
